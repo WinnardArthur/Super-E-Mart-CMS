@@ -1,7 +1,10 @@
-import Image from 'next/image'
+import { UserButton } from "@clerk/nextjs";
 
-export default function Home() {
+export default function SetupPage() {
   return (
-    <p>Admin dashboard Page</p>
-  )
+    <div className="p-4">
+      <UserButton afterSignOutUrl="/" />
+      This is a protected route!
+    </div>
+  );
 }
