@@ -22,6 +22,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { AlertModal } from "@/components/modals/alert-modal";
 
 type SettingsFormProps = {
   initialData: Store;
@@ -61,6 +62,12 @@ export const SettingsForm = ({ initialData }: SettingsFormProps) => {
 
   return (
     <>
+      <AlertModal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        isLoading={isLoading}
+        onConfirm={() => {}}
+      />
       <div className="flex items-center justify-between">
         <Heading title="Settings" description="Manage store preferences" />
         <Button
