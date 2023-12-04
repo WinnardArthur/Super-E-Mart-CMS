@@ -23,7 +23,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { AlertModal } from "@/components/modals/alert-modal";
-import { ApiAlert } from "@/components/ui/api-alert";
 import { useOrigin } from "@/hooks/use-origin";
 import ImageUpload from "@/components/ui/image-upload";
 
@@ -74,6 +73,7 @@ export const BillboardForm = ({ initialData }: BillboardFormProps) => {
       }
 
       router.refresh();
+      router.push(`/${params.storeId}/billboards`)
       toast.success(toastMessage);
     } catch (error) {
       toast.error("Something went wrong.");
@@ -136,7 +136,7 @@ export const BillboardForm = ({ initialData }: BillboardFormProps) => {
         >
           <FormField
             control={form.control}
-            name="label"
+            name="imageUrl"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Background Image</FormLabel>
@@ -163,7 +163,7 @@ export const BillboardForm = ({ initialData }: BillboardFormProps) => {
                     <Input
                       {...field}
                       disabled={isLoading}
-                      placeholder="Store name"
+                      placeholder="Billboard name"
                     />
                   </FormControl>
                   <FormMessage />
