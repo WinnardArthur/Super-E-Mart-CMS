@@ -8,8 +8,11 @@ import { Separator } from "@/components/ui/separator";
 import { Plus } from "lucide-react";
 import { Billboard } from "@prisma/client";
 
+import { BillboardColumn, columns } from "./columns";
+import { DataTable } from "@/components/ui/data-table";
+
 type BillboardProps = {
-  data: Billboard[];
+  data: BillboardColumn[];
 };
 
 export const BillboardClient = ({ data }: BillboardProps) => {
@@ -31,6 +34,8 @@ export const BillboardClient = ({ data }: BillboardProps) => {
         </Button>
       </div>
       <Separator />
+
+      <DataTable columns={columns} data={data} searchKey="label" />
     </>
   );
 };
