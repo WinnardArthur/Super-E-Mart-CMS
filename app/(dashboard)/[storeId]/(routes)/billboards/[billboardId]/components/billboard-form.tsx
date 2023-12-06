@@ -82,7 +82,7 @@ export const BillboardForm = ({ initialData }: BillboardFormProps) => {
     }
   };
 
-  //   On store delete
+  //   On billboards delete
   const onDelete = async () => {
     try {
       setIsLoading(true);
@@ -90,8 +90,9 @@ export const BillboardForm = ({ initialData }: BillboardFormProps) => {
       await axios.delete(
         `/api/${params.storeId}/billboards/${params.billboardId}`
       );
+
       router.refresh();
-      router.push("/");
+      router.push(`/${params.storeId}/billboards`);
       toast.success("Billboard deleted");
     } catch (error) {
       toast.error(

@@ -10,6 +10,7 @@ import { Billboard } from "@prisma/client";
 
 import { BillboardColumn, columns } from "./columns";
 import { DataTable } from "@/components/ui/data-table";
+import { ApiList } from "@/components/ui/api-list";
 
 type BillboardProps = {
   data: BillboardColumn[];
@@ -36,6 +37,11 @@ export const BillboardClient = ({ data }: BillboardProps) => {
       <Separator />
 
       <DataTable columns={columns} data={data} searchKey="label" />
+
+      <Heading title="API" description="API calls for Billboards" />
+      <Separator />
+
+      <ApiList entityIdName="billboardId" entityName="billboards" />
     </>
   );
 };
