@@ -19,6 +19,7 @@ type BillboardProps = {
 export const CategoryClient = ({ data }: BillboardProps) => {
   const router = useRouter();
   const params = useParams();
+  
   return (
     <>
       <div className="flex items-center justify-between">
