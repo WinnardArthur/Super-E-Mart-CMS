@@ -108,6 +108,7 @@ export async function PATCH(
         name,
         price,
         categoryId,
+        colorId,
         sizeId,
         isFeatured,
         isArchived,
