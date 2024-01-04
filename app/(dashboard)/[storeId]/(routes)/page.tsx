@@ -1,12 +1,14 @@
+import { CreditCard, DollarSign, Package } from "lucide-react";
+
 import { getSalesCount } from "@/actions/get-sales-count";
 import { getStockCount } from "@/actions/get-stock-count";
 import { getTotalRevenue } from "@/actions/get-total-revenue";
+import Overview from "@/components/overwiew";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
 import { formatter } from "@/lib/utils";
-import { CreditCard, DollarSign, Package } from "lucide-react";
-import React from "react";
+import { getGraphRevenue } from "@/actions/get-graph-revenue";
 
 const DashboardPage = async ({ params }: { params: { storeId: string } }) => {
   const totalRevenue = await getTotalRevenue(params.storeId);
@@ -14,6 +16,8 @@ const DashboardPage = async ({ params }: { params: { storeId: string } }) => {
   const salesCount = await getSalesCount(params.storeId);
 
   const stockCount = await getStockCount(params.storeId);
+
+  const graphRevenue = await getGraphRevenue(params.storeId);
 
   return (
     <div className="flex-col">
@@ -62,6 +66,15 @@ const DashboardPage = async ({ params }: { params: { storeId: string } }) => {
             </CardContent>
           </Card>
         </div>
+
+        <Card className="col-span-4">
+          <CardHeader>
+            <CardTitle>Overview</CardTitle>
+          </CardHeader>
+          <CardContent className="pl-2">
+            <Overview data={graphRevenue} />
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
