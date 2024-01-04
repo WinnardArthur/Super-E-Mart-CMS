@@ -27,7 +27,7 @@ const Overview = ({ data }: OverProps) => {
           tickFormatter={(value) => `$${value}`}
         />
 
-        <Bar dataKey="total" fill="#3498db" radius={[4, 4, 0, 0]} />
+        <Bar dataKey="total" fill="#ff7373" radius={[4, 4, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
   );
