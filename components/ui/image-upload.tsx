@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button } from "./button";
 import { ImagePlus, Trash } from "lucide-react";
 import Image from "next/image";
-import { CldUploadWidget } from 'next-cloudinary';
+import { CldUploadWidget } from "next-cloudinary";
 
 type ImageUploadProps = {
   disabled?: boolean;
@@ -21,7 +21,7 @@ const ImageUpload = ({
 
   useEffect(() => {
     setIsMounted(true);
-  });
+  }, []);
 
   const onUpload = (result: any) => {
     onChange(result.info.secure_url);
@@ -47,26 +47,33 @@ const ImageUpload = ({
               </Button>
             </div>
 
-            <Image fill className="object-cover rounded" alt="Image" src={url} />
+            <Image
+              fill
+              className="object-cover rounded"
+              alt="Image"
+              src={url}
+            />
           </div>
         ))}
       </div>
 
-      <CldUploadWidget
-        onUpload={onUpload}
-        uploadPreset="Super E-Mart"
-      >
-        {({open}) => {
+      <CldUploadWidget onUpload={onUpload} uploadPreset="Super E-Mart">
+        {({ open }) => {
           const onClick = () => {
             open();
-          }
+          };
 
           return (
-            <Button type='button' disabled={disabled} variant='secondary' onClick={onClick}>
-              <ImagePlus className='h-4 w-4 mr-2' />
+            <Button
+              type="button"
+              disabled={disabled}
+              variant="secondary"
+              onClick={onClick}
+            >
+              <ImagePlus className="h-4 w-4 mr-2" />
               Upload an image
             </Button>
-          )
+          );
         }}
       </CldUploadWidget>
     </div>
